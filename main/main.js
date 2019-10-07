@@ -1,12 +1,13 @@
 module.exports = function main(input) {
     console.log("Debug Info");
-
-    let input2= [
+    
+    inputs = [
         {
             Barcode: 'ITEM000000',
             Name: 'Coca-Cola',
             Unit: 'bottle',
             Price: 3.00
+    
         },
         {
             Barcode: 'ITEM000000',
@@ -46,21 +47,19 @@ module.exports = function main(input) {
         },
         {
             Barcode: 'ITEM000004',
-            Name: 'battery',
+            Name: 'Battery',
             Unit: 'a',
             Price: 2.00
         }
     ];
 
-      var answer = [];
-      for (var j = 0 ; j < Object.keys(input2).length ;j ++) {
-         // console.log(Object.keys(input2).length);
-         // console.log(Object.values(input2));
-        answer.push({key: Object.keys(input2)[j], count: Object.values(input2)[j]},);
-      }
+    const totalPrice= inputs.map(inputs => inputs.Price)
+                             .reduce((a, b) => a + b, 0);
+    
+    
+    const Barcode= inputs.map(inputs => inputs.Barcode);
 
-
-    let expectText =
+    let finalReceipt =
     '***<store earning no money>Receipt ***\n' +
     'Name: Coca-Cola, Quantity: 5 bottles, Unit price: 3.00 (yuan), Subtotal: 15.00 (yuan)\n' +
     'Name: Sprite, Quantity: 2 bottles, Unit price: 3.00 (yuan), Subtotal: 6.00 (yuan)\n' +
@@ -70,6 +69,6 @@ module.exports = function main(input) {
     '**********************\n';
 
 
-    console.log(answer);
+    console.log(pricesArray);
     return input;
 };
